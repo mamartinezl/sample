@@ -1,0 +1,112 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "https://localhost:9443",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/product-statement/send": {
+            "post": {
+                "tags": [
+                    "product-statements-sending-controller"
+                ],
+                "operationId": "sendProductsStatements",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "headers": {
+                                        "$ref": "#/components/schemas/ProductStatementsSendingHeader"
+                                    },
+                                    "body": {
+                                        "$ref": "#/components/schemas/ProductStatementsSendingRequestBody"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProductStatementsSendingHeader": {
+                "type": "object",
+                "properties": {
+                    "cod-sub-channel": {
+                        "type": "string"
+                    },
+                    "eva-token": {
+                        "type": "string"
+                    },
+                    "opn-number": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "Request-ID": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Parameter": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ProductStatementsSendingRequestBody* Connection #0 to host localhost left intact": {
+                "type": "object",
+                "properties": {
+                    "codeFamily": {
+                        "type": "string"
+                    },
+                    "interval": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Parameter"
+                        }
+                    },
+                    "productId": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
